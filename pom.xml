@@ -18,10 +18,23 @@
 	<url>https://wiki.openmrs.org/x/FQ4z</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:openmrs/openmrs-module-coststructure.git</connection>
-		<developerConnection>scm:git:git@github.com:openmrs/openmrs-module-coststructure.git</developerConnection>
-		<url>https://github.com/openmrs/openmrs-module-coststructure/</url>
+		<connection>scm:git:git@github.com:PROYECTO-SANTACLOTILDE/sih-module-coststructure.git</connection>
+		<developerConnection>scm:git:git@github.com:PROYECTO-SANTACLOTILDE/sih-module-coststructure.git</developerConnection>
+		<url>https://github.com/PROYECTO-SANTACLOTILDE/sih-module-coststructure/</url>
 	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/PROYECTO-SANTACLOTILDE/sih-module-coststructure</url>
+		</snapshotRepository>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/PROYECTO-SANTACLOTILDE/sih-module-coststructure</url>
+		</repository>
+	</distributionManagement>
 
 	<modules>
 		<module>api</module>
