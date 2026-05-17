@@ -26,6 +26,8 @@ public class CostStructureDTO {
 	
 	private List<InfrastructureCostDTO> infrastructureCosts;
 	
+	private List<SupplyCostDTO> supplyCosts;
+	
 	public CostStructureDTO() {
 		
 	}
@@ -59,6 +61,12 @@ public class CostStructureDTO {
         if (cs.getInfrastructureCosts() != null) {
             this.infrastructureCosts = cs.getInfrastructureCosts().stream()
                     .map(InfrastructureCostDTO::new)
+                    .collect(Collectors.toList());
+        }
+        
+        if (cs.getSupplyCosts() != null) {
+            this.supplyCosts = cs.getSupplyCosts().stream()
+                    .map(SupplyCostDTO::new)
                     .collect(Collectors.toList());
         }
     }
@@ -135,6 +143,14 @@ public class CostStructureDTO {
 		this.infrastructureCosts = infrastructureCosts;
 	}
 	
+	public List<SupplyCostDTO> getSupplyCosts() {
+		return supplyCosts;
+	}
+	
+	public void setSupplyCosts(List<SupplyCostDTO> supplyCosts) {
+		this.supplyCosts = supplyCosts;
+	}
+	
 	public CostStructure TransformToCostStructure(Concept concept) {
 		CostStructure costStructure = new CostStructure();
 		costStructure.setUuid(UUID.randomUUID().toString());
@@ -146,7 +162,10 @@ public class CostStructureDTO {
 			AnualServiceCost anual = new AnualServiceCost();
 			anual.setUuid(UUID.randomUUID().toString());
 			anual.setEnergyAnnualCost(this.getAnualServiceCost().getEnergyAnnualCost());
+			anual.setWaterAnnualCost(this.getAnualServiceCost().getWaterAnnualCost());
+			anual.setPhoneNetAnnualCost(this.getAnualServiceCost().getPhonenetAnnualCost());
 			anual.setGeneralAdminAnnualCost(this.getAnualServiceCost().getGeneralAdminAnnualCost());
+			anual.setGeneralServiceAnnualCost(this.getAnualServiceCost().getGeneralServiceAnnualCost());
 			anual.setCostStructure(costStructure);
 			costStructure.setAnualServiceCost(anual);
 		}
@@ -159,8 +178,30 @@ public class CostStructureDTO {
 				hr.setTimeMinutes(hrdto.getTimeMinutes());
 				hr.setCostMinutes(hrdto.getCostMinutes());
 				hr.setPriceMonth(hrdto.getPriceMonth());
+				if (hrdto.getHumanResourceId() != null) {
+					HumanResource humanResource = new HumanResource();
+					humanResource.setId(hrdto.getHumanResourceId());
+					hr.setHumanResource(humanResource);
+				}
 				hr.setCostStructure(costStructure);
 				costStructure.addHumanResourceCost(hr);
+			}
+		}
+		if (this.getEquipmentCosts() != null && !this.getEquipmentCosts().isEmpty()) {
+			for (EquipmentCostDTO edto : this.getEquipmentCosts()) {
+				EquipmentCost equipmentCost = new EquipmentCost();
+				equipmentCost.setUuid(UUID.randomUUID().toString());
+				equipmentCost.setPrice(edto.getPrice());
+				equipmentCost.setQuantity(edto.getQuantity());
+				equipmentCost.setTimeMinutes(edto.getTimeMinutes());
+				equipmentCost.setDeprecationPerMinute(edto.getDeprecationPerMinute());
+				if (edto.getEquipmentId() != null) {
+					Equipment equipment = new Equipment();
+					equipment.setId(edto.getEquipmentId());
+					equipmentCost.setEquipment(equipment);
+				}
+				equipmentCost.setCostStructure(costStructure);
+				costStructure.addEquipmentCost(equipmentCost);
 			}
 		}
 		if (this.getInfrastructureCosts() != null && !this.getInfrastructureCosts().isEmpty()) {
@@ -170,8 +211,31 @@ public class CostStructureDTO {
 				infra.setAnnualUnitDep(idto.getAnnualUnitDep());
 				infra.setPerformanceTimeService(idto.getPerformanceTimeService());
 				infra.setProductionProyected(idto.getProductionProyected());
+				if (idto.getInfrastructureId() != null) {
+					Infrastructure infrastructure = new Infrastructure();
+					infrastructure.setId(idto.getInfrastructureId());
+					infra.setInfrastructure(infrastructure);
+				}
 				infra.setCostStructure(costStructure);
 				costStructure.addInfrastructureCost(infra);
+			}
+		}
+		if (this.getSupplyCosts() != null && !this.getSupplyCosts().isEmpty()) {
+			for (SupplyCostDTO sdto : this.getSupplyCosts()) {
+				SupplyCost supplyCost = new SupplyCost();
+				supplyCost.setUuid(UUID.randomUUID().toString());
+				supplyCost.setAcquisitionPrice(sdto.getAcquisitionPrice());
+				supplyCost.setUnitCost(sdto.getUnitCost());
+				supplyCost.setQuantityUsed(sdto.getQuantityUsed());
+				supplyCost.setTimeMinutes(sdto.getTimeMinutes());
+				supplyCost.setPartialCost(sdto.getPartialCost());
+				if (sdto.getSupplyId() != null) {
+					Supply supply = new Supply();
+					supply.setId(sdto.getSupplyId());
+					supplyCost.setSupply(supply);
+				}
+				supplyCost.setCostStructure(costStructure);
+				costStructure.addSupplyCost(supplyCost);
 			}
 		}
 		

@@ -384,7 +384,7 @@
             <column name="location_id" type="int"/>
         </addColumn>
         <addForeignKeyConstraint
-                baseTableName="coststructure_infrastructure"
+                baseTableName="infrastructure"
                 baseColumnNames="location_id"
                 constraintName="fk_infrastructure_location"
                 referencedTableName="location"

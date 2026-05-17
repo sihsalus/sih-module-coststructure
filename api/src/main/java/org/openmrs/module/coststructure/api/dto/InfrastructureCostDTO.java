@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 
 public class InfrastructureCostDTO {
 	
+	private Integer infrastructureId;
+	
 	private BigDecimal annualUnitDep;
 	
 	private BigDecimal performanceTimeService;
@@ -16,12 +18,20 @@ public class InfrastructureCostDTO {
 	}
 	
 	public InfrastructureCostDTO(InfrastructureCost i) {
+		this.infrastructureId = i.getInfrastructure() != null ? i.getInfrastructure().getId() : null;
 		this.annualUnitDep = i.getAnnualUnitDep();
 		this.performanceTimeService = i.getPerformanceTimeService();
 		this.productionProyected = i.getProductionProyected();
 	}
 	
 	// Getters y Setters
+	public Integer getInfrastructureId() {
+		return infrastructureId;
+	}
+	
+	public void setInfrastructureId(Integer infrastructureId) {
+		this.infrastructureId = infrastructureId;
+	}
 	
 	public BigDecimal getAnnualUnitDep() {
 		return annualUnitDep;

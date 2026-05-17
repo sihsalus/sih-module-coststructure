@@ -59,6 +59,9 @@ public class CostStructure extends BaseOpenmrsObject implements Serializable {
 	@OneToMany(mappedBy = "costStructure", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<InfrastructureCost> infrastructureCosts;
 	
+	@OneToMany(mappedBy = "costStructure", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<SupplyCost> supplyCosts;
+	
 	@Override
 	public Integer getId() {
 		return this.id;
@@ -135,6 +138,14 @@ public class CostStructure extends BaseOpenmrsObject implements Serializable {
 		this.infrastructureCosts = infrastructureCosts;
 	}
 	
+	public List<SupplyCost> getSupplyCosts() {
+		return supplyCosts;
+	}
+	
+	public void setSupplyCosts(List<SupplyCost> supplyCosts) {
+		this.supplyCosts = supplyCosts;
+	}
+	
 	public void addHumanResourceCost(HumanResourceCost hrCost) {
         if (this.humanResourceCosts == null) {
             this.humanResourceCosts = new ArrayList<>();
@@ -157,5 +168,13 @@ public class CostStructure extends BaseOpenmrsObject implements Serializable {
          }
         this.equipmentCosts.add(equipmentCost);
         equipmentCost.setCostStructure(this);
+    }
+	
+	public void addSupplyCost(SupplyCost supplyCost) {
+        if (this.supplyCosts == null) {
+            this.supplyCosts = new ArrayList<>();
+        }
+        this.supplyCosts.add(supplyCost);
+        supplyCost.setCostStructure(this);
     }
 }

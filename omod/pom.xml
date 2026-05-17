@@ -2,9 +2,10 @@
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.openmrs.module</groupId>
+		<groupId>io.github.proyecto-santaclotilde</groupId>
 		<artifactId>coststructure</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>coststructure-omod</artifactId>
@@ -14,9 +15,9 @@
 
 	<dependencies>
         <dependency>
-            <groupId>org.openmrs.module</groupId>
+            <groupId>io.github.proyecto-santaclotilde</groupId>
             <artifactId>coststructure-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
@@ -35,8 +36,6 @@
 			<artifactId>uiframework-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-        <!-- Dependencia para serialziar los DTOS , preguntar a pedro, por qué me haces esto openMRS
-         -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
@@ -49,7 +48,6 @@
             <version>1.9.13</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
 	<build>

@@ -17,6 +17,9 @@ public class SupplyCost extends BaseOpenmrsObject implements Serializable {
 	@Column(name = "supply_cost_id")
 	private Integer id;
 	
+	@Column(name = "uuid", nullable = false, unique = true, length = 38)
+	private String uuid;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "supply_id", nullable = false)
 	private Supply supply; // relación con catálogo Supply
@@ -48,6 +51,16 @@ public class SupplyCost extends BaseOpenmrsObject implements Serializable {
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	@Override
+	public String getUuid() {
+		return uuid;
+	}
+	
+	@Override
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	
 	public Supply getSupply() {
@@ -96,5 +109,13 @@ public class SupplyCost extends BaseOpenmrsObject implements Serializable {
 	
 	public void setPartialCost(BigDecimal partialCost) {
 		this.partialCost = partialCost;
+	}
+	
+	public CostStructure getCostStructure() {
+		return costStructure;
+	}
+	
+	public void setCostStructure(CostStructure costStructure) {
+		this.costStructure = costStructure;
 	}
 }

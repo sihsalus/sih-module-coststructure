@@ -24,6 +24,7 @@ import org.openmrs.module.coststructure.api.models.CostStructure;
 import org.openmrs.module.coststructure.api.models.Equipment;
 import org.openmrs.module.coststructure.api.models.HumanResource;
 import org.openmrs.module.coststructure.api.models.Infrastructure;
+import org.openmrs.module.coststructure.api.models.Supply;
 import org.openmrs.module.coststructure.api.service.CoststructureService;
 import org.openmrs.module.coststructure.api.dao.CoststructureDao;
 import org.springframework.transaction.annotation.Transactional;
@@ -169,6 +170,16 @@ public class CoststructureServiceImpl extends BaseOpenmrsService implements Cost
                     equipment.getId()
             );
             dtos.add(dto);
+        }
+        return dtos;
+    }
+	
+	@Override
+    public List<?> getSupplies() throws APIException {
+        List<Supply> supplies = dao.getSupplies();
+        List<SupplyDTO> dtos = new ArrayList<>();
+        for (Supply supply : supplies) {
+            dtos.add(new SupplyDTO(supply));
         }
         return dtos;
     }

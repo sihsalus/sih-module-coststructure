@@ -177,4 +177,10 @@ public class CoststructureController {
     public ResponseEntity<?> getEquipment(){
         return new ResponseEntity<>(coststructureService.getEquipment(), HttpStatus.OK);
     }
+	
+	@RequestMapping(value = "/supply",method = RequestMethod.GET,produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<?> getSupplies(){
+        return new ResponseEntity<>(coststructureService.getSupplies(), HttpStatus.OK);
+    }
 }
