@@ -62,7 +62,7 @@ El archivo `.omod` compilado se generará en `omod/target/coststructure-[version
 
 4. Seleccionar el archivo `.omod` generado:
    ```
-   omod/target/coststructure-1.0.0.omod
+   omod/target/coststructure-1.0.1.omod
    ```
 
 5. El módulo se instalará y cargará automáticamente
@@ -76,7 +76,7 @@ Si estás usando OpenMRS en Docker:
 mvn -B -DskipTests clean package
 
 # Copiar al contenedor de OpenMRS
-docker cp omod/target/coststructure-1.0.0.omod <container-name>:/openmrs/data/modules/
+docker cp omod/target/coststructure-1.0.1.omod <container-name>:/openmrs/data/modules/
 
 # Reiniciar el contenedor
 docker restart <container-name>
