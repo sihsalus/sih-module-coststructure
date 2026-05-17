@@ -72,6 +72,22 @@ public class EquipmentCost extends BaseOpenmrsObject implements Serializable {
 		this.timeMinutes = timeMinutes;
 	}
 	
+	public BigDecimal getPrice() {
+		return price;
+	}
+	
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	
+	public BigDecimal getDeprecationPerMinute() {
+		return deprecationPerMinute;
+	}
+	
+	public void setDeprecationPerMinute(BigDecimal deprecationPerMinute) {
+		this.deprecationPerMinute = deprecationPerMinute;
+	}
+	
 	public Equipment getEquipment() {
 		return equipment;
 	}

@@ -25,17 +25,6 @@
         <require_module version="1.14.0">org.openmrs.module.appui</require_module>
     </require_modules>
 
-	<!-- Extensions -->
-	<extension>
-		<point>org.openmrs.admin.list</point>
-		<class>org.openmrs.module.coststructure.extension.html.AdminList</class>
-	</extension>
-
-	<aware_of_modules>
-		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>
-	</aware_of_modules>
-	
-	
 	<!-- AOP
 	<advice>
 		<point>org.openmrs.api.FormService</point>
@@ -109,4 +98,3 @@
 	<!-- /Internationalization -->
 	
 </module>
-

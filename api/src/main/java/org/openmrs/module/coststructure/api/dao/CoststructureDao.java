@@ -29,6 +29,7 @@ import org.openmrs.module.coststructure.api.models.CostStructure;
 import org.openmrs.module.coststructure.api.models.Equipment;
 import org.openmrs.module.coststructure.api.models.HumanResource;
 import org.openmrs.module.coststructure.api.models.Infrastructure;
+import org.openmrs.module.coststructure.api.models.Supply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -138,6 +139,11 @@ public class CoststructureDao {
 	@SuppressWarnings("unchecked")
 	public List<Equipment> getEquipments() {
 		return (List<Equipment>) sessionFactory.getCurrentSession().createCriteria(Equipment.class).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Supply> getSupplies() {
+		return (List<Supply>) sessionFactory.getCurrentSession().createCriteria(Supply.class).list();
 	}
 	
 	public Item getItemByUuid(String uuid) {

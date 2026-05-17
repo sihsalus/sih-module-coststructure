@@ -76,4 +76,8 @@ public interface CoststructureService extends OpenmrsService {
 	@Authorized(CoststructureConfig.MODULE_PRIVILEGE)
 	@Transactional
 	List<?> getEquipment() throws APIException;
+	
+	@Authorized(CoststructureConfig.MODULE_PRIVILEGE)
+	@Transactional
+	List<?> getSupplies() throws APIException;
 }

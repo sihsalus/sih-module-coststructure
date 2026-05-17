@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 
 public class HumanResourceCostDTO {
 	
+	private Integer humanResourceId;
+	
 	private Integer quantity;
 	
 	private Integer timeMinutes;
@@ -18,10 +20,19 @@ public class HumanResourceCostDTO {
 	}
 	
 	public HumanResourceCostDTO(HumanResourceCost h) {
+		this.humanResourceId = h.getHumanResource() != null ? h.getHumanResource().getId() : null;
 		this.quantity = h.getQuantity();
 		this.timeMinutes = h.getTimeMinutes();
 		this.costMinutes = h.getCostMinutes();
 		this.priceMonth = h.getPriceMonth();
+	}
+	
+	public Integer getHumanResourceId() {
+		return humanResourceId;
+	}
+	
+	public void setHumanResourceId(Integer humanResourceId) {
+		this.humanResourceId = humanResourceId;
 	}
 	
 	public Integer getQuantity() {
