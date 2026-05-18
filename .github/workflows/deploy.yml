@@ -31,11 +31,11 @@ jobs:
           java-version: 8
           cache: maven
 
-      - name: Compile Cost Structure
-        run: mvn -B clean package -DskipTests
-
-      - name: Run API tests
+      - name: Run API and OpenMRS context tests
         run: mvn -B -pl api test
+
+      - name: Package OMOD
+        run: mvn -B clean package -DskipTests
 
       - name: Upload OMOD artifact
         if: success()

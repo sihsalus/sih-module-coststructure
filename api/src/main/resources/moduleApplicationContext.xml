@@ -35,6 +35,7 @@
         <property name="target">
             <bean class="org.openmrs.module.coststructure.api.impl.CoststructureServiceImpl">
                 <property name="dao" ref="coststructure.CoststructureDao" />
+                <property name="userService" ref="userService" />
             </bean>
         </property>
         <property name="preInterceptors">
